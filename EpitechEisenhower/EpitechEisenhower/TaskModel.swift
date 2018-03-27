@@ -27,11 +27,11 @@ struct TaskModel {
         self.date = date
     }
 	
-	mutating func newImportant(important:String) {
+	mutating func newImportant(important: Bool) {
         self.important = important
     }
 	
-	mutating func newUrgent(urgent:String) {
+	mutating func newUrgent(urgent: Bool) {
         self.urgent = urgent
     }
 }

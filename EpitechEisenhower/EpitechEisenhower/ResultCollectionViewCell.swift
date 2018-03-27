@@ -7,8 +7,10 @@
 //
 
 import UIKit
-class CustomCell: UICollectionViewCell {
+class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var myTitle: UILabel!
     
-    
+    func setModel(model: TaskModel) {
+        myTitle.text = model.titre
+    }
 }

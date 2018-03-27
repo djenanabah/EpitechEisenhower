@@ -175,7 +175,7 @@
                                 </view>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.066666666669999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cellReuseId" id="cBL-Pr-mIP" customClass="CustomCell" customModule="EpitechEisenhower" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" restorationIdentifier="ResultCollectionViewCell" reuseIdentifier="cellReuseId" id="cBL-Pr-mIP" customClass="ResultCollectionViewCell" customModule="EpitechEisenhower" customModuleProvider="target">
                                 <rect key="frame" x="225" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -209,6 +209,9 @@
                             <outlet property="delegate" destination="aQl-vJ-Kvq" id="eyb-bq-Jsh"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="RVm-eJ-QHq" id="PPo-SQ-AqK"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQ8-de-hd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

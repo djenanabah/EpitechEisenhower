@@ -44,7 +44,7 @@ extension HomeInteractorImp: HomeInteractor {
     
     func loadData() {
 		Alamofire
-            .request("https://ios-project-4d009.firebaseio.com/" + userId)
+            .request("https://ios-project-4d009.firebaseio.com/" + "1HePScaWTGdG1JnNJbx4lz3zp763")
             .responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
@@ -61,6 +61,6 @@ extension HomeInteractorImp: HomeInteractor {
     }
     
     func getFilteredResults(searchText: String) -> [TaskModel]? {
-        return resultsManager?.resultsTask.filter { $0.name.hasPrefix(searchText) }
+        return resultsManager?.resultsTask.filter { $0.titre.hasPrefix(searchText) }
     }
 }

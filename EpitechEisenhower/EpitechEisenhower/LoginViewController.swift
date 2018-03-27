@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showHome" {
             if let destination = segue.destination as? HomeViewController {
-                destination.monTitre = "truc"
+                destination.title = "truc"
             }
         }
     }
