@@ -15,7 +15,7 @@ enum TaskResult {
 }
 
 protocol TaskInteractor {
-    func addData()
+    func addData(task: TaskModel)
 }
 
 struct TaskInteractorImp {
@@ -30,11 +30,11 @@ struct TaskInteractorImp {
 
 extension TaskInteractorImp: TaskInteractor {
     
-    func addData() {
+    func addData(task: TaskModel) {
 		var ref: DatabaseReference!
         ref = Database.database().reference()
-		jsonString = "TATA"
-        ref.child(self.userID).setValue(jsonString)
+		let jsonString = "TATA"
+        ref.child(self.userID!).setValue(jsonString)
     }
 }
 

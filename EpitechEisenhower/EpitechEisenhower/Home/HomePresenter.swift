@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
 protocol HomePresenter {
     func dataLoaded(result: HomeResult)
 }
@@ -37,6 +36,10 @@ struct HomePresenterImp {
         if let task = interactor?.getTaskAtIndexPath(indexPath: indexPath) {
             router?.cellWasSelected(task: task)
         }
+    }
+    
+    func cellAddTaskSelected(){
+        router?.cellAddTaskSelected()
     }
 }
 

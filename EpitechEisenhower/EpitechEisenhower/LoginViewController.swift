@@ -51,9 +51,10 @@ class LoginViewController: UIViewController {
                                     print("Naba connect success:  \(result)")
                                     if let homeVC = UIStoryboard(name: "Main",
                                                                  bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
-                                       let router = HomeRouterImp(view: homeVC)
                                         let userID = Auth.auth().currentUser?.uid
                                         print("usederID: \(String(describing: userID))")
+                                        let router = HomeRouterImp(view: homeVC, userId: userID)
+                                       
                                        var presenter = HomePresenterImp(view: homeVC, router: router)
                                         let interactor = HomeInteractorImp(presenter: presenter, resultsManager: ResultsManagerImp.sharedInstance, userID: userID)
                                         presenter.setInteractor(interactor: interactor)

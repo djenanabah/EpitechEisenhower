@@ -18,6 +18,10 @@
 		9A7ADE821FCEC9DA00F6C354 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7ADE811FCEC9DA00F6C354 /* HomeViewController.swift */; };
 		B60944AE206A961F0007C1B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944AD206A961F0007C1B0 /* RegisterViewController.swift */; };
 		B60944B0206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944AF206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift */; };
+		B60944BE206AC2030007C1B0 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944BA206AC2020007C1B0 /* TaskViewController.swift */; };
+		B60944BF206AC2030007C1B0 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944BB206AC2020007C1B0 /* TaskInteractor.swift */; };
+		B60944C0206AC2030007C1B0 /* TaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944BC206AC2020007C1B0 /* TaskRouter.swift */; };
+		B60944C1206AC2030007C1B0 /* TaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944BD206AC2030007C1B0 /* TaskPresenter.swift */; };
 		B6A33EC22064223A0045B39D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A33EC12064223A0045B39D /* GoogleService-Info.plist */; };
 		B6A33EC5206429170045B39D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A33EC4206429170045B39D /* HomeRouter.swift */; };
 		B6A33EC7206429220045B39D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A33EC6206429220045B39D /* HomePresenter.swift */; };
@@ -45,6 +49,10 @@
 		9A7ADE811FCEC9DA00F6C354 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B60944AD206A961F0007C1B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B60944AF206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		B60944BA206AC2020007C1B0 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		B60944BB206AC2020007C1B0 /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
+		B60944BC206AC2020007C1B0 /* TaskRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRouter.swift; sourceTree = "<group>"; };
+		B60944BD206AC2030007C1B0 /* TaskPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPresenter.swift; sourceTree = "<group>"; };
 		B6A33EC12064223A0045B39D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6A33EC4206429170045B39D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		B6A33EC6206429220045B39D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		9A5623D31F7940280009CD23 /* EpitechEisenhower */ = {
 			isa = PBXGroup;
 			children = (
+				B60944B1206AC12B0007C1B0 /* Task */,
 				B6A33EC32064282D0045B39D /* Home */,
 				B6A33EC12064223A0045B39D /* GoogleService-Info.plist */,
 				B6C99F4520641E9400C34CD5 /* Utils */,
@@ -114,6 +123,17 @@
 				B6F13D02206A710D0027DD28 /* UserModel.swift */,
 			);
 			path = EpitechEisenhower;
+			sourceTree = "<group>";
+		};
+		B60944B1206AC12B0007C1B0 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				B60944BB206AC2020007C1B0 /* TaskInteractor.swift */,
+				B60944BD206AC2030007C1B0 /* TaskPresenter.swift */,
+				B60944BC206AC2020007C1B0 /* TaskRouter.swift */,
+				B60944BA206AC2020007C1B0 /* TaskViewController.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 		B6A33EC32064282D0045B39D /* Home */ = {
@@ -313,14 +333,18 @@
 				9A5623D71F7940280009CD23 /* LoginViewController.swift in Sources */,
 				B6C99F442064195400C34CD5 /* EpitechAuthImp.swift in Sources */,
 				B6A33EC7206429220045B39D /* HomePresenter.swift in Sources */,
+				B60944BE206AC2030007C1B0 /* TaskViewController.swift in Sources */,
+				B60944C1206AC2030007C1B0 /* TaskPresenter.swift in Sources */,
 				B6F13D03206A710D0027DD28 /* UserModel.swift in Sources */,
 				9A5623D51F7940280009CD23 /* AppDelegate.swift in Sources */,
+				B60944BF206AC2030007C1B0 /* TaskInteractor.swift in Sources */,
 				9A697F3A1FD82C370058F748 /* TaskModel.swift in Sources */,
 				9A697F381FD824920058F748 /* ResultCollectionViewCell.swift in Sources */,
 				B60944AE206A961F0007C1B0 /* RegisterViewController.swift in Sources */,
 				B6A33ECC20642B010045B39D /* ResultsManager.swift in Sources */,
 				9A7ADE821FCEC9DA00F6C354 /* HomeViewController.swift in Sources */,
 				B6A33EC5206429170045B39D /* HomeRouter.swift in Sources */,
+				B60944C0206AC2030007C1B0 /* TaskRouter.swift in Sources */,
 				B6C99F422064190D00C34CD5 /* EpitechAuth.swift in Sources */,
 				B60944B0206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift in Sources */,
 			);

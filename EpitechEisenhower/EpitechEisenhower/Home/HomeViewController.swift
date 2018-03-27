@@ -40,7 +40,7 @@ extension HomeViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellAddTask", for: indexPath)
             if let cell = cell as?  AddTaskCollectionViewCell {
                 //Todo set delegate
-                
+                cell.setPresenter(presenter: presenter!)
             }
             return cell
         }

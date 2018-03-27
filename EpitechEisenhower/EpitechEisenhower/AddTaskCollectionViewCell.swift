@@ -10,8 +10,15 @@ import UIKit
 
 class AddTaskCollectionViewCell: UICollectionViewCell {
     
+    var presenter : HomePresenterImp?
+    
     
     @IBAction func onAddTaskTapped(_ sender: Any) {
         print("Add Task Tapped")
+        presenter?.cellAddTaskSelected()
+    }
+    
+    func setPresenter(presenter: HomePresenterImp) {
+        self.presenter = presenter
     }
 }

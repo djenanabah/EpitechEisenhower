@@ -12,7 +12,7 @@ import RxCocoa
 
 
 protocol TaskPresenter {
-    func dataLoaded(result: TaskResult)
+    func dataAdded(result: TaskResult)
 }
 
 struct TaskPresenterImp {
@@ -29,16 +29,14 @@ struct TaskPresenterImp {
         self.router = router
     }
     
-    func buttonWasSelected(indexPath: IndexPath) {
-       router?.buttonWasSelected(task: task)
+    func buttonWasSelected(task: TaskModel) {
+       interactor?.addData(task: task)
     }
 }
 
 extension TaskPresenterImp: TaskPresenter {
     func dataAdded(result: TaskResult) {
         switch result {
-        case .success(let results):
-            return;
         case .failure(let error):
             view?.displayError(error: error.localizedDescription)
         }

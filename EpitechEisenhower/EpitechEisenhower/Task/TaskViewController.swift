@@ -13,17 +13,19 @@ protocol TaskView: class {
     func displayError(error: String)
 }
 
-class TaskViewController: UICollectionViewController{
+class TaskViewController: UIViewController{
 
 	var presenter: TaskPresenterImp?
-	
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-}
-extension TaskViewController {
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.buttonWasSelected()
+    
+    @IBAction func onSaveButtonTapped(_ sender: Any) {
+        presenter?.buttonWasSelected(task: TaskModel(titre: titleTextField.text!, description: descriptionTextField.text!, date: Date(), important: true, urgent: true))
     }
 }
 

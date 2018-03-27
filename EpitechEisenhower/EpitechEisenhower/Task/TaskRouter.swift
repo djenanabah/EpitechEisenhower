@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TaskRouter {
-    func buttonWasSelected()
+    func buttonWasSelected(task: TaskModel)
 }
 
 struct TaskRouterImp {
@@ -17,7 +17,7 @@ struct TaskRouterImp {
 }
 
 extension TaskRouterImp: TaskRouter {
-    func buttonWasSelected() {
+    func buttonWasSelected(task: TaskModel) {
        /* if let detailViewController = UIStoryboard(name: "Main",
                                                    bundle: nil).instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController {
             detailViewController.setModel(model: user)
