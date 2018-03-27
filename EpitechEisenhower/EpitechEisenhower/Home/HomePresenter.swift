@@ -25,7 +25,7 @@ struct HomePresenterImp {
         self.interactor = interactor
     }
     
-    init(view: HomeViewC?, router: HomeRouter?) {
+    init(view: HomeViewController?, router: HomeRouter?) {
         self.view = view
         self.router = router
         view?.searchTextField?.rx
@@ -33,7 +33,7 @@ struct HomePresenterImp {
             .orEmpty
             .debounce(0.3, scheduler: MainScheduler.instance)
             .subscribe(onNext: { query in
-                //                self.view?.receiveData(results: self.interactor?.getFilteredResults(searchText: query) ?? [UserModel]())
+                //                self.view?.receiveData(results: self.interactor?.getFilteredResults(searchText: query) ?? [TaskModel]())
             })
             .disposed(by: disposeBag)
     }
@@ -43,8 +43,8 @@ struct HomePresenterImp {
     }
     
     func cellWasSelected(indexPath: IndexPath) {
-        if let user = interactor?.getUserAtIndexPath(indexPath: indexPath) {
-            router?.cellWasSelected(user: user)
+        if let task = interactor?.getTaskAtIndexPath(indexPath: indexPath) {
+            router?.cellWasSelected(task: task)
         }
     }
 }
