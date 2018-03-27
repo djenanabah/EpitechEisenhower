@@ -11,32 +11,12 @@ import Alamofire
 
 
 class HomeViewController: UICollectionViewController {
-    var monTitre: String?
-    var content = [TaskModel]()
-    
+
+	var presenter: HomePresenterImp?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = monTitre
-        content.append(TaskModel(titre: "Fred"))
-        content.append(TaskModel(titre: "Simon"))
-        content.append(TaskModel(titre: "Alex"))
-        
-		
-		Alamofire
-            .request("https://ios-project-4d009.firebaseio.com/" + userId)
-            .responseJSON { (response) in
-                switch response.result {
-                case .success(let value):
-                    if let value = value as? [String: Any], let resultsJson = value as? [Any] {
-                        self.results = resultsJson.map({ (data) -> TaskModel in
-                            return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date)
-                        })
-                       self.collectionView.reloadData()
-                    }
-                case .failure(let error):
-                    print("erreur \(error)")
-                }
-        }
+        presenter?.loadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

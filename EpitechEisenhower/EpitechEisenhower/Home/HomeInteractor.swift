@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 enum HomeResult {
-    case success([UserModel])
+    case success([TaskModel])
     case failure(Error)
 }
 
 protocol HomeInteractor {
     func loadData()
-    func getUserAtIndexPath(indexPath: IndexPath) -> UserModel?
-    func getFilteredResults(searchText: String) -> [UserModel]?
+    func getTaskAtIndexPath(indexPath: IndexPath) -> TaskModel?
+    func getFilteredResults(searchText: String) -> [TaskModel]?
 }
 
 struct HomeInteractorImp {
@@ -31,41 +31,36 @@ struct HomeInteractorImp {
 
 extension HomeInteractorImp: HomeInteractor {
     
-    func getUserAtIndexPath(indexPath: IndexPath) -> UserModel? {
-        guard indexPath.row < resultsManager?.results.count ?? 0 else {
+    func getTaskAtIndexPath(indexPath: IndexPath) -> TaskModel? {
+        guard indexPath.row < resultsManager?.resultsTask.count ?? 0 else {
             return nil
         }
-        return resultsManager?.results[indexPath.row]
+        return resultsManager?.resultsTask[indexPath.row]
     }
     
-    func setResults(results: [UserModel]) {
-        resultsManager?.results = results
+    func setResults(results: [TaskModel]) {
+        resultsManager?.resultsTask = results
     }
     
     func loadData() {
-        Alamofire
-            .request("https://api.randomuser.me/?nat=US&results=15")
+		Alamofire
+            .request("https://ios-project-4d009.firebaseio.com/" + userId)
             .responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
-                    if let value = value as? [String: Any], let resultsJson = value["results"] as? [Any] {
-                        let results = resultsJson.map({ (data) -> UserModel in
-                            if let data = data as? [String: Any], let name = data["name"] as? [String: Any]
-                            {
-                                return UserModel(name: name["last"] as! String)
-                            }
-                            return UserModel(name: "No Name")
+                    if let value = value as? [String: Any], let resultsJson = value as? [Any] {
+                        self.content = resultsJson.map({ (data) -> TaskModel in
+                            return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date)
                         })
-                        self.presenter?.dataLoaded(result: HomeResult.success(results))
-                        self.setResults(results: results)
+                       self.collectionView.reloadData()
                     }
                 case .failure(let error):
-                    self.presenter?.dataLoaded(result: HomeResult.failure(error))
+                    print("erreur \(error)")
                 }
         }
     }
     
-    func getFilteredResults(searchText: String) -> [UserModel]? {
-        return resultsManager?.results.filter { $0.name.hasPrefix(searchText) }
+    func getFilteredResults(searchText: String) -> [TaskModel]? {
+        return resultsManager?.resultsTask.filter { $0.name.hasPrefix(searchText) }
     }
 }

@@ -16,4 +16,20 @@ struct TaskModel {
     mutating func newTitle(title:String) {
         self.titre = title
     }
+	
+	mutating func newDescription(description:String) {
+        self.description = description
+    }
+	
+	mutating func newDate(date:Date) {
+        self.date = date
+    }
+	
+	mutating func newImportant(important:String) {
+        self.important = important
+    }
+	
+	mutating func newUrgent(urgent:String) {
+        self.urgent = urgent
+    }
 }

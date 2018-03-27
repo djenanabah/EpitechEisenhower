@@ -10,10 +10,12 @@ import Foundation
 
 protocol ResultsManager: class {
     var results: [UserModel] {get set}
+	var resultsTask: [TaskModel] {get set}
 }
 
 class ResultsManagerImp: ResultsManager {
     var results = [UserModel]()
+	var resultsTask = [TaskModel]()
     static let sharedInstance = ResultsManagerImp()
     private init() {}
 }

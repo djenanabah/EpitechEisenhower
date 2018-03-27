@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeRouter {
-    func cellWasSelected(user: UserModel)
+    func cellWasSelected(task: TaskModel)
 }
 
 struct HomeRouterImp {
@@ -17,7 +17,7 @@ struct HomeRouterImp {
 }
 
 extension HomeRouterImp: HomeRouter {
-    func cellWasSelected(user: UserModel) {
+    func cellWasSelected(task: TaskModel) {
         if let detailViewController = UIStoryboard(name: "Main",
                                                    bundle: nil).instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController {
             detailViewController.setModel(model: user)
