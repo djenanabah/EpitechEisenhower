@@ -39,7 +39,8 @@ extension EpitechAuthImp: EpitechAuth {
                            password: password,
                            completion: {(user, error) in
                             if let _ = user {
-                                completion(ResultAuth.success(user?.providerID ?? "no ID"))
+                                print("User : \(user)")
+                                completion(ResultAuth.success(user?.email ?? "no email"))
                                 
                             }else if let error = error {
                                 completion(ResultAuth.failure(error))

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -47,12 +48,14 @@ class LoginViewController: UIViewController {
                             completion: {[weak self] (result) in
                                 switch result {
                                 case .success :
-                                    print(result)
+                                    print("Naba connect success:  \(result)")
                                     if let homeVC = UIStoryboard(name: "Main",
                                                                  bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
                                        let router = HomeRouterImp(view: homeVC)
+                                        let userID = Auth.auth().currentUser?.uid
+                                        print("usederID: \(String(describing: userID))")
                                        var presenter = HomePresenterImp(view: homeVC, router: router)
-                                       let interactor = HomeInteractorImp(presenter: presenter, resultsManager: ResultsManagerImp.sharedInstance)
+                                        let interactor = HomeInteractorImp(presenter: presenter, resultsManager: ResultsManagerImp.sharedInstance, userID: userID)
                                         presenter.setInteractor(interactor: interactor)
                                         homeVC.presenter = presenter
                                         self?.navigationController?.pushViewController(homeVC, animated: true)
