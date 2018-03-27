@@ -30,13 +30,22 @@ class HomeViewController: UICollectionViewController{
 }
 
 extension HomeViewController {
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                      for: indexPath)
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellAddTask", for: indexPath)
+            if let cell = cell as?  AddTaskCollectionViewCell {
+                //Todo set delegate
+                
+            }
+            return cell
+        }
+        
+        let cell = collectView.dequeueReusableCell(withReuseIdentifier: "cellTask", for: indexPath)
         if let cell = cell as? ResultCollectionViewCell {
             cell.setModel(model: displayResults[indexPath.row])
         }
@@ -53,7 +62,7 @@ extension HomeViewController {
 extension HomeViewController: HomeView {
     func receiveData(results: [TaskModel]) {
         displayResults = results
-       // collectView.reloadData()
+        collectView.reloadData()
     }
     func displayError(error: String) {
         print(error)

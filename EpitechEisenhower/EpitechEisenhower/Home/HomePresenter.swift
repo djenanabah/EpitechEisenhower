@@ -19,7 +19,6 @@ struct HomePresenterImp {
     private var view: HomeViewController?
     private var interactor: HomeInteractor?
     private var router: HomeRouter?
-    private let disposeBag = DisposeBag()
     
     mutating func setInteractor(interactor: HomeInteractor?) {
         self.interactor = interactor
@@ -28,14 +27,6 @@ struct HomePresenterImp {
     init(view: HomeViewController?, router: HomeRouter?) {
         self.view = view
         self.router = router
-        view?.searchTextField?.rx
-            .text
-            .orEmpty
-            .debounce(0.3, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { query in
-                //                self.view?.receiveData(results: self.interactor?.getFilteredResults(searchText: query) ?? [TaskModel]())
-            })
-            .disposed(by: disposeBag)
     }
     
     func loadData() {

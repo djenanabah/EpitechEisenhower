@@ -18,10 +18,16 @@ struct HomeRouterImp {
 
 extension HomeRouterImp: HomeRouter {
     func cellWasSelected(task: TaskModel) {
-       /* if let detailViewController = UIStoryboard(name: "Main",
+     /* if let detailViewController = UIStoryboard(name: "Main",
                                                    bundle: nil).instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController {
             detailViewController.setModel(model: user)
             view?.navigationController?.pushViewController(detailViewController, animated: true)
         }*/
     }
+    
+    func cellAddTaskSelected(){
+        
+    }
 }
+
+

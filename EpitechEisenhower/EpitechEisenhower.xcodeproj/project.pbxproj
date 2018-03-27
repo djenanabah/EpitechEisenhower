@@ -17,6 +17,7 @@
 		9A697F3A1FD82C370058F748 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A697F391FD82C370058F748 /* TaskModel.swift */; };
 		9A7ADE821FCEC9DA00F6C354 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7ADE811FCEC9DA00F6C354 /* HomeViewController.swift */; };
 		B60944AE206A961F0007C1B0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944AD206A961F0007C1B0 /* RegisterViewController.swift */; };
+		B60944B0206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60944AF206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift */; };
 		B6A33EC22064223A0045B39D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A33EC12064223A0045B39D /* GoogleService-Info.plist */; };
 		B6A33EC5206429170045B39D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A33EC4206429170045B39D /* HomeRouter.swift */; };
 		B6A33EC7206429220045B39D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A33EC6206429220045B39D /* HomePresenter.swift */; };
@@ -43,6 +44,7 @@
 		9A697F391FD82C370058F748 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		9A7ADE811FCEC9DA00F6C354 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B60944AD206A961F0007C1B0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B60944AF206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6A33EC12064223A0045B39D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6A33EC4206429170045B39D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		B6A33EC6206429220045B39D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				9A5623DD1F7940280009CD23 /* LaunchScreen.storyboard */,
 				9A5623E01F7940280009CD23 /* Info.plist */,
 				9A697F371FD824920058F748 /* ResultCollectionViewCell.swift */,
+				B60944AF206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift */,
 				9A697F391FD82C370058F748 /* TaskModel.swift */,
 				B6F13D02206A710D0027DD28 /* UserModel.swift */,
 			);
@@ -319,6 +322,7 @@
 				9A7ADE821FCEC9DA00F6C354 /* HomeViewController.swift in Sources */,
 				B6A33EC5206429170045B39D /* HomeRouter.swift in Sources */,
 				B6C99F422064190D00C34CD5 /* EpitechAuth.swift in Sources */,
+				B60944B0206ABDEC0007C1B0 /* AddTaskCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

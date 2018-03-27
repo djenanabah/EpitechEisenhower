@@ -167,16 +167,26 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="autreCell" id="QOb-iE-elQ">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" restorationIdentifier="AddTaskCollectionViewCell" reuseIdentifier="cellAddTask" id="QOb-iE-elQ" customClass="AddTaskCollectionViewCell" customModule="EpitechEisenhower" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-ud-Ni8">
+                                            <rect key="frame" x="24" y="44" width="103" height="49"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="AddTask"/>
+                                            <connections>
+                                                <action selector="onAddTaskTapped:" destination="QOb-iE-elQ" eventType="touchUpInside" id="aFz-ox-44E"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.066666666669999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" restorationIdentifier="ResultCollectionViewCell" reuseIdentifier="cellReuseId" id="cBL-Pr-mIP" customClass="ResultCollectionViewCell" customModule="EpitechEisenhower" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" restorationIdentifier="ResultCollectionViewCell" reuseIdentifier="cellTask" id="cBL-Pr-mIP" customClass="ResultCollectionViewCell" customModule="EpitechEisenhower" customModuleProvider="target">
                                 <rect key="frame" x="225" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -192,6 +202,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-K8-zj2">
+                                            <rect key="frame" x="20" y="90" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.2156862745" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
@@ -201,6 +218,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="TPP-J5-x3E" secondAttribute="trailing" constant="10" id="RTm-9c-eFS"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="dateLabel" destination="FDV-K8-zj2" id="C1D-C6-vGC"/>
                                     <outlet property="myTitle" destination="TPP-J5-x3E" id="ct0-88-Ted"/>
                                 </connections>
                             </collectionViewCell>
@@ -211,6 +229,7 @@
                         </connections>
                     </collectionView>
                     <connections>
+                        <outlet property="collectView" destination="RVm-eJ-QHq" id="gvl-uv-vNr"/>
                         <outlet property="collectionView" destination="RVm-eJ-QHq" id="PPo-SQ-AqK"/>
                     </connections>
                 </collectionViewController>
@@ -280,4 +299,7 @@
             <point key="canvasLocation" x="-599" y="900"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddTask" width="49" height="49"/>
+    </resources>
 </document>

@@ -49,6 +49,7 @@ extension HomeInteractorImp: HomeInteractor {
     func loadData() {
         print("LoadData")
         var arrTask: [TaskModel] = []
+        arrTask.append(TaskModel(titre: "", description: "", date: Date(), important: true, urgent: true))
 		var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child(self.userID!).observe(.value, with: { snapshot in
