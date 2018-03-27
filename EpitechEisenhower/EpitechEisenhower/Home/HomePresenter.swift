@@ -16,7 +16,7 @@ protocol HomePresenter {
 }
 
 struct HomePresenterImp {
-    private var view: HomeView?
+    private var view: HomeViewController?
     private var interactor: HomeInteractor?
     private var router: HomeRouter?
     private let disposeBag = DisposeBag()
@@ -25,7 +25,7 @@ struct HomePresenterImp {
         self.interactor = interactor
     }
     
-    init(view: HomeView?, router: HomeRouter?) {
+    init(view: HomeViewC?, router: HomeRouter?) {
         self.view = view
         self.router = router
         view?.searchTextField?.rx

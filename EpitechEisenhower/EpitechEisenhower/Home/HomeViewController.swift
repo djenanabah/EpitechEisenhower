@@ -28,7 +28,7 @@ class HomeViewController: UICollectionViewController {
                 switch response.result {
                 case .success(let value):
                     if let value = value as? [String: Any], let resultsJson = value as? [Any] {
-                        self.results = resultsJson.map({ (data) -> TaskModel in
+                        self.content = resultsJson.map({ (data) -> TaskModel in
                             return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date)
                         })
                        self.collectionView.reloadData()
