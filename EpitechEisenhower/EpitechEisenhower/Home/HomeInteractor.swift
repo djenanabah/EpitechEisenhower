@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Alamofire
+import Firebase
 
 enum HomeResult {
     case success([TaskModel])
@@ -46,36 +46,20 @@ extension HomeInteractorImp: HomeInteractor {
     
     func loadData() {
         var arrTask: [TaskModel] = []
-		Alamofire
-            .request("https://ios-project-4d009.firebaseio.com/" + self.userID!)
-            .responseJSON { (response) in
-                
-                print("Responce Value : \(response)")
-                switch response.result {
-                case .success(let _):
-                    if let objJson = response.result.value as! NSArray? {
-                        for element in objJson {
-                            let data = element as! NSDictionary
-                            arrTask.append(TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date, important: true, urgent: true))
-                        }
-                    }
-                    self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
-                    self.setResults(results: arrTask)
-                    
-                    /*
- if let value = value as? [String: Any], let resultsJson = value as? [String : Any] {
-                        let results = resultsJson.map({ (data) -> TaskModel in
-                            return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date, important: true, urgent: true)
-                        })
-                        self.presenter?.dataLoaded(result: HomeResult.success(results))
-                        self.setResults(results: results)*/
-                case .failure(let error):
-                    self.presenter?.dataLoaded(result: HomeResult.failure(error))
-                }
+		
+		var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID!)
+		
+		ref.observeEventType(.Value, withBlock: { snapshot in
+			println(snapshot.value.objectForKey("Nom"))
+			println(snapshot.value.objectForKey("Description"))
+			//self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
+            //self.setResults(results: arrTask)
+		}, withCancelBlock: { error in
+			self.presenter?.dataLoaded(result: HomeResult.failure(error))
+		})              
         }
     }
     
-    func getFilteredResults(searchText: String) -> [TaskModel]? {
-        return resultsManager?.resultsTask.filter { $0.titre.hasPrefix(searchText) }
-    }
+func getFilteredResults(searchText: String) -> [TaskModel]? {
+    return resultsManager?.resultsTask.filter { $0.titre.hasPrefix(searchText) }
 }
