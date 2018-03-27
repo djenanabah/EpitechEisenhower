@@ -53,7 +53,7 @@ extension HomeViewController {
 extension HomeViewController: HomeView {
     func receiveData(results: [TaskModel]) {
         displayResults = results
-        collectView.reloadData()
+       // collectView.reloadData()
     }
     func displayError(error: String) {
         print(error)

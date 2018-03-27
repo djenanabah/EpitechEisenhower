@@ -47,14 +47,24 @@ extension HomeInteractorImp: HomeInteractor {
     }
     
     func loadData() {
+        print("LoadData")
         var arrTask: [TaskModel] = []
-       // var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID)
-        var ref: DatabaseReference!
+		var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.observe(.value, with: { snapshot in
-            print(snapshot.value)
-            //self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
-            //self.setResults(results: arrTask)
+        ref.child(self.userID!).observe(.value, with: { snapshot in
+            let value = snapshot.value as? NSDictionary
+			for item in value! {
+                let task = item.value as! NSDictionary
+                print("item : \(String(describing: task["Date"]))")
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                dateFormatter.locale = NSLocale(localeIdentifier: "fr_FR_POSIX") as Locale!
+                let date = dateFormatter.date(from: task["Date"] as! String)!
+            arrTask.append(TaskModel(titre: task["Nom"] as! String, description: task["Description"] as! String, date: date, important: task["important"] as! Bool, urgent: task["urgent"] as! Bool))
+			}
+            print(arrTask)
+            self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
+            self.setResults(results: arrTask)
         }, withCancel: { error in
             self.presenter?.dataLoaded(result: HomeResult.failure(error))
         })
