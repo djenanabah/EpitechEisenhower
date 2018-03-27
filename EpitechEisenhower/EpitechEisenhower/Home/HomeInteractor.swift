@@ -49,13 +49,14 @@ extension HomeInteractorImp: HomeInteractor {
                 switch response.result {
                 case .success(let value):
                     if let value = value as? [String: Any], let resultsJson = value as? [Any] {
-                        self.content = resultsJson.map({ (data) -> TaskModel in
+                        let results = resultsJson.map({ (data) -> TaskModel in
                             return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date)
                         })
-                       self.collectionView.reloadData()
+                        self.presenter?.dataLoaded(result: HomeResult.success(results))
+                        self.setResults(results: results)
                     }
                 case .failure(let error):
-                    print("erreur \(error)")
+                    self.presenter?.dataLoaded(result: HomeResult.failure(error))
                 }
         }
     }
