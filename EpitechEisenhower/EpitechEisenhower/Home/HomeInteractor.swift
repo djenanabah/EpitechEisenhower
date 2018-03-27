@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
 
 enum HomeResult {
     case success([TaskModel])
@@ -23,7 +24,8 @@ protocol HomeInteractor {
 struct HomeInteractorImp {
     private var presenter: HomePresenter?
     private var resultsManager: ResultsManager?
-    private var userID: String?
+    var userID: String?
+
     init(presenter: HomePresenter?, resultsManager: ResultsManager?, userID: String?) {
         self.presenter = presenter
         self.resultsManager = resultsManager
@@ -46,19 +48,20 @@ extension HomeInteractorImp: HomeInteractor {
     
     func loadData() {
         var arrTask: [TaskModel] = []
-		
-		var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID!)
-		
-		ref.observeEventType(.Value, withBlock: { snapshot in
-			println(snapshot.value)
-			//self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
+       // var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID)
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.observe(.value, with: { snapshot in
+            print(snapshot.value)
+            //self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
             //self.setResults(results: arrTask)
-		}, withCancelBlock: { error in
-			self.presenter?.dataLoaded(result: HomeResult.failure(error))
-		})              
-        }
+        }, withCancel: { error in
+            self.presenter?.dataLoaded(result: HomeResult.failure(error))
+        })
     }
-    
-func getFilteredResults(searchText: String) -> [TaskModel]? {
-    return resultsManager?.resultsTask.filter { $0.titre.hasPrefix(searchText) }
+
+    func getFilteredResults(searchText: String) -> [TaskModel]? {
+        return resultsManager?.resultsTask.filter { $0.titre.hasPrefix(searchText) }
+    }
 }
+

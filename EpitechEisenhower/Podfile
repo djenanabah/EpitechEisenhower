@@ -8,4 +8,5 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'Firebase/Database'
 end
