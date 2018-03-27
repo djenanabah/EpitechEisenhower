@@ -21,13 +21,21 @@ class HomeViewController: UICollectionViewController {
         content.append(TaskModel(titre: "Simon"))
         content.append(TaskModel(titre: "Alex"))
         
-        Alamofire.request("https://api.randomuser.me/?nat=US&results=5").responseString { (toto) in
-            switch toto.result {
-            case .success(let titi):
-                print(titi)
-            case .failure(let error):
-                print(error)
-            }
+		
+		Alamofire
+            .request("https://ios-project-4d009.firebaseio.com/" + userId)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success(let value):
+                    if let value = value as? [String: Any], let resultsJson = value as? [Any] {
+                        self.results = resultsJson.map({ (data) -> TaskModel in
+                            return TaskModel(titre: data["Nom"] as! String, description: data["Description"] as! String, date: data["Date"] as! Date)
+                        })
+                       self.collectionView.reloadData()
+                    }
+                case .failure(let error):
+                    print("erreur \(error)")
+                }
         }
     }
     

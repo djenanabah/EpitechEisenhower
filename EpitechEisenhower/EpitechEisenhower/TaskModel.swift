@@ -10,6 +10,8 @@ import Foundation
 
 struct TaskModel {
     private(set) var titre: String
+	private(set) var description: String
+	private(set) var date: Date
     
     mutating func newTitle(title:String) {
         self.titre = title
