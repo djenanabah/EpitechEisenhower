@@ -48,13 +48,17 @@ extension HomeInteractorImp: HomeInteractor {
     
     func loadData() {
         var arrTask: [TaskModel] = []
-       // var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID)
-        var ref: DatabaseReference!
+		var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.observe(.value, with: { snapshot in
-            print(snapshot.value)
-            //self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
-            //self.setResults(results: arrTask)
+        ref.child("self.userID").observe(.value, with: { snapshot in
+			let jsonTask = snapshot.value as NSDictionary
+			for item in jsonTask {
+				let task = item as NSDictionary
+				arrTask.append(TaskModel(titre: item["Nom"], description: item["Description"], date: item["Date"], important: true, urgent: true))
+			}
+            print(arrTask)
+            self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
+            self.setResults(results: arrTask)
         }, withCancel: { error in
             self.presenter?.dataLoaded(result: HomeResult.failure(error))
         })
