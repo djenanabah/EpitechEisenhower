@@ -50,8 +50,7 @@ extension HomeInteractorImp: HomeInteractor {
 		var ref = Firebase(url:"https://ios-project-4d009.firebaseio.com/" + self.userID!)
 		
 		ref.observeEventType(.Value, withBlock: { snapshot in
-			println(snapshot.value.objectForKey("Nom"))
-			println(snapshot.value.objectForKey("Description"))
+			println(snapshot.value)
 			//self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
             //self.setResults(results: arrTask)
 		}, withCancelBlock: { error in
