@@ -33,8 +33,7 @@ extension TaskInteractorImp: TaskInteractor {
     func addData(task: TaskModel) {
 		var ref: DatabaseReference!
         ref = Database.database().reference()
-		let jsonString = "TATA"
-        ref.child(self.userID!).setValue(jsonString)
+		ref.child(self.userID!).childByAutoId().setValue(["Nom": task.titre as! NSString, "description": description.titre as! NSString , "date":task.date as! NSString, "important":task.important as! NSString, "urgent":task.urgent as! NSString])
     }
 }
 
