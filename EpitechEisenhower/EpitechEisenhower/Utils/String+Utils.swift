@@ -15,3 +15,23 @@ extension String {
         return emailTest.evaluate(with: self)
     }
 }
+
+class Utils{
+    func BoolAsString(_ attribut: Bool) -> NSString {
+        if (attribut == true) {
+            return "true"
+        }
+        return "false"
+    }
+
+    func DateAsString(_ date: Date) -> NSString {
+        return "06-06-2018"
+    }
+    
+    func StringAsBool(value:String) -> Bool {
+        if (value == "true"){
+            return true
+        }
+        return false
+    }
+}

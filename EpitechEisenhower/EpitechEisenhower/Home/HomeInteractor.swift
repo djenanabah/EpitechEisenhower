@@ -54,15 +54,20 @@ extension HomeInteractorImp: HomeInteractor {
         ref = Database.database().reference()
         ref.child(self.userID!).observe(.value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
-			for item in value! {
-                let task = item.value as! NSDictionary
-                print("item : \(String(describing: task["Date"]))")
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy"
-                dateFormatter.locale = NSLocale(localeIdentifier: "fr_FR_POSIX") as Locale!
-                let date = dateFormatter.date(from: task["Date"] as! String)!
-            arrTask.append(TaskModel(titre: task["Nom"] as! String, description: task["Description"] as! String, date: date, important: task["important"] as! Bool, urgent: task["urgent"] as! Bool))
-			}
+            if (value != nil) {
+                for item in value! {
+                    let task = item.value as! NSDictionary
+                    print("item : \(String(describing: task["date"]))")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd-MM-yyyy"
+                    dateFormatter.locale = NSLocale(localeIdentifier: "fr_FR_POSIX") as Locale!
+                    let date = dateFormatter.date(from: task["date"] as! String)!
+                    let utils = Utils()
+                    let important = utils.StringAsBool(value: task["important"] as! String)
+                    let urgent = utils.StringAsBool(value: task["urgent"] as! String)
+                    arrTask.append(TaskModel(titre: task["nom"] as! String, description: task["description"] as! String, date: date, important: important, urgent: urgent))
+                }
+            }
             print(arrTask)
             self.presenter?.dataLoaded(result: HomeResult.success(arrTask))
             self.setResults(results: arrTask)

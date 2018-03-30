@@ -32,8 +32,13 @@ extension TaskInteractorImp: TaskInteractor {
     
     func addData(task: TaskModel) {
 		var ref: DatabaseReference!
+        let utils = Utils()
+        let date : String? = utils.DateAsString(task.date) as String
+        let important : String? = utils.BoolAsString(task.important) as String
+        let urgent : String? = utils.BoolAsString(task.urgent) as String
         ref = Database.database().reference()
-		ref.child(self.userID!).childByAutoId().setValue(["Nom": task.titre as! NSString, "description": description.titre as! NSString , "date":task.date as! NSString, "important":task.important as! NSString, "urgent":task.urgent as! NSString])
+        ref.child(self.userID!).childByAutoId().setValue(["nom": task.titre as NSString, "description": task.description as NSString, "date": date! as NSString, "important": important! as NSString, "urgent":urgent! as NSString])
     }
 }
 
+//, "date": (DateAsString(task.date) as NSString), "important":BoolAsString(task.important) as NSString, "urgent":BoolAsString(task.urgent) as NSString
