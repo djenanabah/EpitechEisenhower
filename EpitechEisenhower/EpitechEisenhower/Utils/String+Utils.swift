@@ -25,7 +25,16 @@ class Utils{
     }
 
     func DateAsString(_ date: Date) -> NSString {
-        return "06-06-2018"
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+		let myString = formatter.string(from: date)
+		let yourDate = formatter.date(from: myString)
+		formatter.dateFormat = "dd-MMM-yyyy"
+		formatter.locale = NSLocale(localeIdentifier: "fr_FR_POSIX") as Locale!
+		let myStringafd = formatter.string(from: yourDate!)
+
+        return myStringafd
     }
     
     func StringAsBool(value:String) -> Bool {
